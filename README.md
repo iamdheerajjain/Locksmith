@@ -30,6 +30,7 @@ git clone <repository-url>
 cd locksmith
 
 # Start the application
+docker-compose build --no-cache
 docker-compose up -d
 
 # Access the application
@@ -154,15 +155,3 @@ docker-compose logs -f
 docker-compose logs -f backend
 docker-compose logs -f frontend
 ```
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test with Docker
-5. Submit a pull request
-
-## 📄 License
-
-This project is licensed under the MIT License.
