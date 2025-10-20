@@ -69,10 +69,11 @@ npm run dev
 
 ```bash
 # Start development environment with hot reload
+mvn clean package
+cd ui/password-generator-tool
+npm run build
+cd ../..
 docker-compose -f docker-compose.dev.yml up -d
-
-# View logs
-docker-compose -f docker-compose.dev.yml logs -f
 ```
 
 ## 🐳 Docker
