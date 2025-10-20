@@ -43,7 +43,86 @@ To stop the application:
 docker-compose down
 ```
 
+## ☁️ Deploy to Vercel (Frontend)
 
+### Prerequisites
+
+1. A [Vercel](https://vercel.com/) account
+2. A deployed backend API (see Backend Deployment section)
+
+### Steps
+
+1. Fork this repository to your GitHub account
+2. Log in to your Vercel dashboard
+3. Click "New Project" and select your forked repository
+4. Configure the project:
+   - Set the **Root Directory** to: `ui/password-generator-tool`
+   - The build settings should be automatically detected
+5. Add environment variables:
+   - `REACT_APP_API_URL`: Your deployed backend API URL (e.g., `https://your-api-domain.com/`)
+6. Click "Deploy"
+
+### Environment Variables
+
+For local development:
+- Create a `.env.development` file in `ui/password-generator-tool/` with:
+  ```
+  REACT_APP_API_URL=http://localhost:8080/
+  ```
+
+For production deployment:
+- Set the `REACT_APP_API_URL` environment variable in your Vercel project settings
+
+## ☁️ Deploy Backend to Cloud Platforms
+
+### Option 1: Deploy to Heroku (Recommended for beginners)
+
+1. Create a [Heroku](https://www.heroku.com/) account
+2. Install the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli)
+3. Fork this repository to your GitHub account
+4. Create a new app in your Heroku dashboard
+5. Connect your GitHub repository to Heroku:
+   - Go to the "Deploy" tab in your Heroku app
+   - Select "GitHub" as the deployment method
+   - Connect your GitHub account and select your forked repository
+6. Configure environment variables in Heroku:
+   - Go to the "Settings" tab
+   - Click "Reveal Config Vars"
+   - Add the following variables:
+     - `MAIL_USERNAME`: Your email address for sending emails
+     - `MAIL_PASSWORD`: Your email app password (not your regular password)
+7. Enable automatic deploys or manually deploy by clicking "Deploy Branch"
+
+### Option 2: Deploy to Railway
+
+1. Create a [Railway](https://railway.app/) account
+2. Fork this repository to your GitHub account
+3. Create a new project in Railway
+4. Select "Deploy from GitHub repo"
+5. Choose your forked repository
+6. Railway will automatically detect this is a Java/Maven project
+7. Add environment variables:
+   - `MAIL_USERNAME`: Your email address for sending emails
+   - `MAIL_PASSWORD`: Your email app password
+8. Deploy the application
+
+### Option 3: Deploy using Docker
+
+You can deploy the Docker image to any cloud platform that supports containers:
+
+1. Build the Docker image:
+   ```bash
+   docker build -t locksmith-backend .
+   ```
+
+2. Push to a container registry (Docker Hub, AWS ECR, etc.)
+
+3. Deploy to your preferred platform:
+   - AWS ECS
+   - Google Cloud Run
+   - Azure Container Instances
+   - DigitalOcean Apps
+   - etc.
 
 ## 👨‍💻 Development
 
@@ -135,6 +214,8 @@ docker push yourusername/locksmith-frontend:latest
 **Environment Variables:**
 - `SPRING_PROFILES_ACTIVE` - Spring profile (docker, dev, prod)
 - `SERVER_PORT` - Server port (default: 8080)
+- `MAIL_USERNAME` - Email address for sending emails
+- `MAIL_PASSWORD` - Email app password (not your regular password)
 
 **Health Checks:**
 - Backend: `http://localhost:8080/actuator/health`
@@ -146,6 +227,7 @@ docker push yourusername/locksmith-frontend:latest
 - **Port conflicts**: Ensure ports 3000 and 8080 are available
 - **Build failures**: Check Docker daemon is running
 - **Network issues**: Ensure Docker networks are properly configured
+- **Email configuration**: Make sure MAIL_USERNAME and MAIL_PASSWORD are set correctly
 
 **View Logs:**
 ```bash

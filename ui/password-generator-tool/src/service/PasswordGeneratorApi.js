@@ -1,7 +1,6 @@
 import axios from "axios";
 
-const apiUrl = "http://localhost:8080/";
-// const apiUrl = "http://Pgt-aws-server-env.eba-nj3vrmpc.ap-south-1.elasticbeanstalk.com/"
+const apiUrl = process.env.REACT_APP_API_URL || "http://localhost:8080/";
 
 export const generatePasswordApi = (characters) =>
   axios.post(apiUrl, characters);
