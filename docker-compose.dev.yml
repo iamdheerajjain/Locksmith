@@ -1,0 +1,43 @@
+version: "3.8"
+
+services:
+  # Backend Spring Boot API (Development)
+  backend-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: locksmith-backend-dev
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=dev
+      - SERVER_PORT=8080
+    volumes:
+      - .:/app
+      - /app/target
+    networks:
+      - locksmith-dev-network
+    restart: unless-stopped
+    command: ["mvn", "spring-boot:run"]
+
+  # Frontend React Application (Development)
+  frontend-dev:
+    build:
+      context: ./ui/password-generator-tool
+      dockerfile: Dockerfile.dev
+    container_name: locksmith-frontend-dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./ui/password-generator-tool:/app
+      - /app/node_modules
+    depends_on:
+      - backend-dev
+    networks:
+      - locksmith-dev-network
+    restart: unless-stopped
+
+networks:
+  locksmith-dev-network:
+    driver: bridge
+    name: locksmith-dev-network

@@ -1,0 +1,264 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom slider styles with enhanced pastel purple and light steel blue */
+.slider::-webkit-slider-thumb {
+  appearance: none;
+  height: 22px;
+  width: 22px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #C5ADC5, #B2B5E0);
+  cursor: pointer;
+  border: 3px solid #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.slider::-moz-range-thumb {
+  height: 22px;
+  width: 22px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #C5ADC5, #B2B5E0);
+  cursor: pointer;
+  border: 3px solid #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.slider::-webkit-slider-track {
+  height: 10px;
+  border-radius: 5px;
+  background: linear-gradient(to right, #E2DFF2, #D6D4EE);
+}
+
+.slider::-moz-range-track {
+  height: 10px;
+  border-radius: 5px;
+  background: linear-gradient(to right, #E2DFF2, #D6D4EE);
+}
+
+/* Dark mode slider adjustments */
+.dark .slider::-webkit-slider-thumb {
+  border-color: #363650;
+  background: linear-gradient(135deg, #C5ADC5, #B2B5E0);
+}
+
+.dark .slider::-moz-range-thumb {
+  border-color: #363650;
+  background: linear-gradient(135deg, #C5ADC5, #B2B5E0);
+}
+
+.dark .slider::-webkit-slider-track {
+  background: linear-gradient(to right, #5A5A7A, #6A6A8A);
+}
+
+.dark .slider::-moz-range-track {
+  background: linear-gradient(to right, #5A5A7A, #6A6A8A);
+}
+
+/* Animation for password display */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.password-display {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Smooth transitions for all interactive elements */
+button, a, input[type="checkbox"] {
+  transition: all 0.3s ease;
+}
+
+/* Hover effects for cards */
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-5px);
+}
+
+/* Light mode soothing background gradient */
+.bg-gradient-light {
+  background: linear-gradient(135deg, #F8F7FC 0%, #E2DFF2 100%);
+}
+
+/* Dark mode soothing background gradient */
+.dark .bg-gradient-dark {
+  background: linear-gradient(135deg, #2A2A40 0%, #363650 100%);
+}
+
+/* Enhanced gradients using the new color scheme */
+.bg-gradient-primary {
+  background: linear-gradient(135deg, #C5ADC5 0%, #B2B5E0 100%);
+}
+
+.bg-gradient-secondary {
+  background: linear-gradient(135deg, #B2B5E0 0%, #C5ADC5 100%);
+}
+
+.bg-gradient-primary-reverse {
+  background: linear-gradient(135deg, #B2B5E0 0%, #C5ADC5 100%);
+}
+
+.text-gradient-primary {
+  background: linear-gradient(135deg, #C5ADC5 0%, #B2B5E0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-secondary {
+  background: linear-gradient(135deg, #B2B5E0 0%, #C5ADC5 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Enhanced button styles */
+.btn-primary {
+  @apply bg-gradient-primary text-white rounded-2xl font-medium transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1;
+}
+
+.btn-primary-hover {
+  background: linear-gradient(135deg, #B39DB3 0%, #9FA2CC 100%);
+}
+
+.btn-secondary {
+  @apply bg-gradient-secondary text-white rounded-2xl font-medium transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1;
+}
+
+.btn-secondary-hover {
+  background: linear-gradient(135deg, #9FA2CC 0%, #B39DB3 100%);
+}
+
+/* Card styles with enhanced borders and shadows */
+.card-primary {
+  @apply bg-light-surface dark:bg-dark-surface rounded-3xl shadow-xl border border-light-border/50 dark:border-dark-border/50 transition-all duration-300 hover:shadow-2xl;
+}
+
+.card-secondary {
+  @apply bg-gradient-to-br from-light-background to-light-secondary/20 dark:from-dark-background dark:to-dark-secondary/20 rounded-2xl p-6 border border-light-border dark:border-dark-border shadow-inner transition-all duration-300;
+}
+
+/* Password strength indicator animations */
+.strength-indicator {
+  transition: all 0.3s ease-in-out;
+}
+
+.strength-indicator.very-strong {
+  animation: pulseGreen 2s infinite;
+}
+
+.strength-indicator.strong {
+  animation: pulseBlue 2s infinite;
+}
+
+.strength-indicator.good {
+  animation: pulseYellow 2s infinite;
+}
+
+.strength-indicator.fair {
+  animation: pulseOrange 2s infinite;
+}
+
+.strength-indicator.poor {
+  animation: pulseRed 2s infinite;
+}
+
+@keyframes pulseGreen {
+  0% { box-shadow: 0 0 0 0 rgba(72, 187, 120, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(72, 187, 120, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(72, 187, 120, 0); }
+}
+
+@keyframes pulseBlue {
+  0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(59, 130, 246, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
+}
+
+@keyframes pulseYellow {
+  0% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(251, 191, 36, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0); }
+}
+
+@keyframes pulseOrange {
+  0% { box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(249, 115, 22, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(249, 115, 22, 0); }
+}
+
+@keyframes pulseRed {
+  0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+}
+
+/* Smooth fade in for new elements */
+@keyframes smoothFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.smooth-fade-in {
+  animation: smoothFadeIn 0.6s ease-out forwards;
+}
+
+/* Enhanced hover effects */
+.hover-lift {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Password copy animation */
+.copy-animation {
+  animation: copyPulse 0.5s ease-in-out;
+}
+
+@keyframes copyPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* Loading spinner */
+.loading-spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Password generation animation */
+.password-generation {
+  animation: passwordGenerate 0.8s ease-out;
+}
+
+@keyframes passwordGenerate {
+  0% { opacity: 0; transform: scale(0.95); }
+  50% { opacity: 1; transform: scale(1.05); }
+  100% { opacity: 1; transform: scale(1); }
+}
